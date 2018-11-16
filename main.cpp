@@ -83,10 +83,12 @@ public:
     }
 
     T& operator[] (index_type index){
+        assert(index < size);
         return *(ptr+index);
     }
 
     const T& operator[] (index_type index) const{
+        assert(index < size);
         return *(ptr+index);
     }
 
@@ -97,7 +99,6 @@ public:
     T* end() const{
         return ptr+size;
     }
-
 
     ~MyArray(){
         if (ptr != nullptr){
@@ -114,10 +115,10 @@ std::ostream& operator << (std::ostream& stream, const MyArray<T>& arr){
     return stream;
 }
 
-using IntegerArray = MyArray<int>;
-
 int main()
 {
+    using IntegerArray = MyArray<int>;
+
     //Usual constructor
     IntegerArray arr1(5);
 
