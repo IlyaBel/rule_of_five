@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <algorithm>
+#include <cassert>
 
 using std::cout;
 using std::endl;
@@ -50,6 +51,8 @@ public:
 
         cout << "Copy assignment operator was called" << endl;
 
+        assert(this != &rhs);
+
         size = rhs.size;
 
         ptr = static_cast<T*>(realloc(ptr, size));
@@ -69,6 +72,8 @@ public:
     MyArray& operator = (MyArray&& rhs) {
 
         cout << "Move assignment operator was called" << endl;
+
+        assert(this != &rhs);
 
         destructMyself();
 
