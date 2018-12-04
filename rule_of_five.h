@@ -80,7 +80,8 @@ MyArray<T>& MyArray<T>::operator = (const MyArray& rhs){
 
     cout << "Copy assignment operator was called" << endl;
 
-    assert(this != &rhs);
+    if (this == &rhs)
+        return *this;
 
     size_ = rhs.size_;
 
